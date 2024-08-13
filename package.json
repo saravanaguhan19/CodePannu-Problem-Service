@@ -1,0 +1,11 @@
+{
+  "name": "codepannu-problem-service",
+  "version": "1.0.0",
+  "description": "This is an admin service to manage problems of the CodePannu platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Saravana Guhan",
+  "license": "ISC"
+}
