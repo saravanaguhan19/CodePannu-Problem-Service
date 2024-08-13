@@ -3,6 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const { PORT } = require("./config/server.config");
 const apiRouter = require("./routes");
+const errorHandler = require("./utils/errorHandler");
 
 const app = express();
 
@@ -18,6 +19,9 @@ app.get("/ping", (req, res) => {
     message: "Problem Service is alive",
   });
 });
+
+//last middleware if any error comes
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`Server started at PORT: ${PORT} `);
