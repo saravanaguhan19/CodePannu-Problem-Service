@@ -29,7 +29,6 @@ class ProblemRepository {
 
   async getProblem(id) {
     try {
-      
       // if (!mongoose.Types.ObjectId.isValid(id)) {
       //     console.log("not valid object id ")
 
@@ -41,6 +40,17 @@ class ProblemRepository {
       if (!problem) {
         throw new NotFound("Problem", id);
       }
+      return problem;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
+  async deleteProblem(id) {
+    try {
+      const problem = await Problem.findByIdAndDelete(id);
+      if (!problem) throw new NotFound("Problem", id);
       return problem;
     } catch (error) {
       console.log(error);
