@@ -1,8 +1,8 @@
 const { StatusCodes } = require("http-status-codes");
-const NotImplemented = require("../errors/notImplemented.error");
+
 const { ProblemRepository } = require("../repositories");
 const { ProblemService } = require("../services");
-const mongoose = require("mongoose");
+
 
 const problemService = new ProblemService(new ProblemRepository());
 
@@ -56,7 +56,7 @@ async function getProblems(req, res, next) {
   }
 }
 
-async function deleteProblem(req, res,next) {
+async function deleteProblem(req, res, next) {
   try {
     //nothing implemented
     const id = req.params.id;
@@ -72,10 +72,22 @@ async function deleteProblem(req, res,next) {
   }
 }
 
-function updateProblem(req, res,next) {
+async function updateProblem(req, res, next) {
   try {
     //nothing implemented
-    throw new NotImplemented("updateProblem");
+    const id = req.params.id;
+    const data = req.body;
+
+    console.log("inside update controller", id, data);
+
+    const updatedProblem = await problemService.updateProblem(id, data);
+
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: "Successfully updated  the   problem",
+      error: {},
+      data: updatedProblem,
+    });
   } catch (error) {
     next(error);
   }
