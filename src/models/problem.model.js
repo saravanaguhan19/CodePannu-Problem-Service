@@ -28,27 +28,24 @@ const userSchema = new mongoose.Schema(
         },
       },
     ],
-    codeStubs : [
+    codeStubs: [
       {
-        language : {
-          type : String ,
-          enum : ["CPP" , "JAVA" , "PYTHON"],
-          required : true
+        language: {
+          type: String,
+          enum: ["CPP", "JAVA", "PYTHON"],
+          required: true,
         },
-        startSnippet : {
-          type : String ,
-          
+        startSnippet: {
+          type: String,
         },
-        endSnippet : {
-          type : String ,
-          
+        endSnippet: {
+          type: String,
         },
-        userSnippet : {
-          type : String ,
-          
-        }
-      }
-    ]
+        userSnippet: {
+          type: String,
+        },
+      },
+    ],
     editorial: {
       type: String,
     },
